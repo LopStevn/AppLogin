@@ -1,0 +1,43 @@
+﻿@model AppLogin.ViewModels.LoginViewModel;
+
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="row mt-5 justify-content-center">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header">
+                    Login
+                </div>
+
+                <div class="card-body">
+                    <form asp-controller="Access" asp-action="Login" method="post">
+                        <input class="form-control mb-3" type="text" placeholder="Email" required asp-for="Email" />
+                        <input class="form-control mb-3" type="password" placeholder="Password" required asp-for="Password" />
+            
+                        <div class="d-grid gap-2 mb-3">
+                            <button class="btn btn-info" type="submit">Log in</button>
+                        </div>
+
+                        @if (ViewData["Message"] != null)
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                @ViewData["Message"]
+                            </div>
+                        }
+
+                        You do not have an account? <a asp-controller="Access" asp-action="SignIn">Sign up here!</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
